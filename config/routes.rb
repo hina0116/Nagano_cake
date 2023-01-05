@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'homes/top'
+  end
   namespace :public do
     get 'items/index'
     get 'items/show'
@@ -8,6 +11,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :genres, only: [:new, :create, :index, :edit, :update]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update]
   end
 
 devise_for :customers,skip: [:passwords], controllers: {

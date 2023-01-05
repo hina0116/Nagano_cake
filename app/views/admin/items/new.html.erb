@@ -1,5 +1,5 @@
 <h2>商品新規登録</h2>
-  <%= form_with model: @item, url: '/admin/items', method: :get do |f| %>
+  <%= form_with model: @item, url: '/admin/items', method: :post do |f| %>
 
     <h4>商品画像
       <%= f.file_field :image, accept: "image/*" %>
