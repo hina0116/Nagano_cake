@@ -8,18 +8,19 @@
       <%= f.text_field :name, placeholder: "商品名" %>
     </h4>
     <h4>商品説明
-      <%= f.text_field :introduction, :size=>"50", placeholder: "ここに説明文を記述します" %>
+      <%= f.text_area :introduction, :size=>"50", placeholder: "ここに説明文を記述します" %>
     </h4>
-    <h4>ジャンル</h4>
-      <li class="nav-item dropdown">
-        <ul class="dropdown-menu">
-          <% form_for [@production], url: genres_path do |f| %>
-            <% @genre_id.each do |genre| %>
-              <li><a class="dropdown-item" href="#"><%= genre.name %></a></li>
-            <% end %>
-          <% end %>
-        </ul>
-    <h4>税別価格</h4>
-    <h4>販売ステータス</h4>
+    <h4>ジャンル
+      <%= f.collection_select :genre_id, Genre.all ,:id, :name, include_blank: "--選択してください--" %>
+    </h4>
+    <h4>税別価格
+      <%= f.text_field :price, placeholder: "1000" %>円
+    </h4>
+    <h4>販売ステータス
+      <%= f.radio_button :items, '1' %>
+      <%= f.label :items, '販売中', value: 1 %>
+      <%= f.radio_button :items, '0' %>
+      <%= f.label :items, '販売停止中', value: 0 %>
+    </h4>
     <%= f.submit '新規登録' %>
   <% end %>

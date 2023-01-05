@@ -2,10 +2,11 @@ class Admin::ItemsController < ApplicationController
   def new
     @item = Item.new
   end
-  
+
   def create
-    @genre_id = Genre.find_by(code: params[:item][:genre_id]).id
-    Production.create(genre_params.merge(item_id: item_id))
+    @item = Item.new(item_params)
+    @item.save
+    redirect_to admin_items_path
   end
 
   def index
@@ -13,15 +14,16 @@ class Admin::ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
   end
 
   def edit
   end
-  
+
   private
-  
-  def genre_params
-    params.require(:genre).permit(:amount)
+
+  def item_params
+    params.require(:item).permit(:genre_id, :name, :introduction, :price, :is_active)
   end
-  
+
 end
