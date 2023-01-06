@@ -12,7 +12,7 @@
     <tbody>
       <% @items.each do |item| %>
         <tr>
-          <td><%= item.id %></td>
+          <td><%= link_to order.created_at %></td>
           <td><%= link_to item.name ,admin_item_path(@items) %></td>
           <td><%= item.price.to_s(:delimited, delimiter: ',') %></td>
           <td><%= item.genre.name %></td>
