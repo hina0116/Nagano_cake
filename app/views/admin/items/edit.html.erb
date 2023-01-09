@@ -1,26 +1,36 @@
 <h2>商品編集</h2>
   <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
-
-    <th><%= f.label :商品画像 %></th>
-      <%= f.file_field :image, accept: "image/*" %>
-
-    <th><%= f.label :商品名 %></th>
-      <%= f.text_field :name %>
-
-    <th><%= f.label :商品説明 %></th>
-      <%= f.text_area :introduction, :size=>"50" %>
-
-    <th><%= f.label :ジャンル %></th>
-      <%= f.collection_select :genre_id, Genre.all ,:id, :name, include_blank: "--選択してください--" %>
-
-    <th><%= f.label :税別価格 %></th>
-      <%= f.text_field :price %>円
-
-    <th><%= f.label :販売ステータス %></th>
-      <%= f.radio_button :items, '1' %>
-      <%= f.label :items, '販売中', value: 1 %>
-      <%= f.radio_button :items, '0' %>
-      <%= f.label :items, '販売停止中', value: 0 %>
+    <table>
+      <thead>
+        <tr>
+          <td><%= f.label :商品画像 %></td>
+          <td><%= f.file_field :image, accept: "image/*" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :商品名 %></td>
+          <td><%= f.text_field :name %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :商品説明 %></td>
+          <td><%= f.text_area :introduction, :size=>"50" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :ジャンル %></td>
+          <td><%= f.collection_select :genre_id, Genre.all ,:id, :name, include_blank: "--選択してください--" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :税抜価格 %></td>
+          <td><%= f.text_field :price %>円</td>
+        </tr>
+        <tr>
+          <td><%= f.label :販売ステータス %></td>
+          <td><%= f.radio_button :items, '1' %></td>
+          <td><%= f.label :items, '販売中', value: 1 %></td>
+          <td><%= f.radio_button :items, '0' %></td>
+          <td><%= f.label :items, '販売停止中', value: 0 %></td>
+        </tr>
+      </tbody>
+    </table>
 
     <%= f.submit '変更を保存' %>
   <% end %>

@@ -7,15 +7,16 @@
       </tr>
       <tr>
         <td>商品説明</td>
-        <td><%= @item.description %></td>
+        <td><%= @item.introduction %></td>
       </tr>
       <tr>
         <td>ジャンル</td>
         <td><%= @item.genre.name %></td>
       </tr>
       <tr>
-        <td>税込価格</td>
-        <td><%= (@item.price*1.1).floor.to_s(:delimited, delimiter: ',') %>円</td>
+        <td>税込価格<br>
+            (税抜価格)</td>
+        <td><%= (@item.price*1.1).floor.to_s(:delimited, delimiter: ',') %>(<%= @item.price.to_s(:delimited, delimiter: ',') %>)円</td>
       </tr>
       <tr>
         <td>販売ステータス</td>
@@ -30,4 +31,4 @@
     </tbody>
   </table>
 
-  <%= link_to "編集する", edit_admins_item_path(@item) %>
+  <%= link_to "編集する", edit_admin_item_path(@item) %>
