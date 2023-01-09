@@ -1,2 +1,52 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<h2>注文履歴詳細</h2>
+<table>
+  <tr>
+    <th>購入者</th>
+    <td></td>
+  </tr>
+  <tr>
+    <th>注文日</th>
+    <td><%= @order.created_at %></td>
+  </tr>
+  <tr>
+    <th>配送先</th>
+    <td><%= @order.postal_code %><%= @order.address %></td>
+    <td><%= @order.name %></td>
+  </tr>
+  <tr>
+    <th>支払方法</th>
+    <td></td>
+  </tr>
+  <tr>
+    <th>注文ステータス</th>
+    <td></td>
+    <td><%= f.submit '更新' %></td>
+  </tr>
+</table>
+
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>商品名</th>
+        <th>単価（税込）</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th>制作ステータス</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @order.each do |order| %>
+        <tr>
+          <td><%= order.item.name %></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><%= f.submit '更新' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

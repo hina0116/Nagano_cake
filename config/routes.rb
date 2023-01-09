@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    root to: "homes#top"
+    get 'homes/about'
+  end
   namespace :admin do
     get 'orders/show'
   end
