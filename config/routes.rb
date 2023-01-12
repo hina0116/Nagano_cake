@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   namespace :public do
     resources :items, only: [:index, :show]
     resources :addresses, only: [:index, :edit, :update]
+    resources :cart_items, only: [:index, :create, :update]
   end
 
   namespace :admin do
