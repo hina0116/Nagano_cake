@@ -1,0 +1,27 @@
+<h2>注文情報入力</h2>
+<h3>支払方法</h3>
+  <div>
+    <%= f.radio_button :orders, '0' %>
+    <%= f.label :orders, 'クレジットカード', value: 0 %>
+    <%= f.radio_button :orders, '1' %>
+    <%= f.label :orders, '銀行振込', value: 1 %>
+  </div>
+<h3>お届け先</h3>
+  <%= f.radio_button :customers, 'ご自身の住所' %>
+  <%= @customers.address %>
+  <%= f.radio_button :customers, '登録済住所から選択' %>
+
+  <%= f.radio_button :customers, '新しいお届け先' %>
+  <table>
+    <tr>
+      <td>郵便番号（ハイフンなし）</td>
+      <td><%= f.text_field :postal_code %></td>
+
+      <td>住所</td>
+      <td><%= f.text_field :address, :size=>"50" %></td>
+
+      <td>宛名</td>
+      <td><%= f.text_field :name %></td>
+    </tr>
+  </table>
+  <%= f.submit '確認画面へ進む' %>
