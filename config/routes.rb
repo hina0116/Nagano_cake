@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     patch 'customers/withdraw'
   end
   namespace :public do
-    root to: "homes#top"
+    root to: 'homes#top'
     get 'homes/about'
   end
   namespace :admin do
