@@ -1,4 +1,9 @@
 <h2>商品詳細</h2>
+  <% if @item.image.attached? %>
+    <%= image_tag @item.image, size: "200x200" %>
+  <% else %>
+    <%= image_tag 'no_image', size: "200x200" %>
+  <% end %>
   <table>
     <tbody>
       <tr>
