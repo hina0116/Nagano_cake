@@ -1,5 +1,5 @@
 <h2>ショッピングカート</h2>
-  <table>
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>商品名</th>
@@ -9,4 +9,26 @@
         <th></th>
       </tr>
     </thead>
+    <tbody>
+      <% @cart_items.each do |cart_item| %>
+        <tr>
+          <td>
+            <% if @item.image.attached? %>
+              <%= image_tag @item.image, size: "50x50" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "50x50" %>
+            <% end %>
+            <%= @item.name %>
+          </td>
+          <td><%= cart_item.item.with_tax_price%></td>
+          <td><%= cart_item.subtotal %></td>
+          <% @合計金額 += cart_item.subtotal %>
+          <td>
+            <%= form_with model: @cart_items do |f| %>
+              <%= f.select :amount, *[1..3] %>
+              <%= f.hidden_field :item_id, :value => @item.id %>
+            <% end %></td>
+        </tr>
+      <% end %>
+    </tbody>
   </table>

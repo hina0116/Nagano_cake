@@ -7,12 +7,6 @@ Rails.application.routes.draw do
     get 'orders/show'
   end
   namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/unsubscribe'
-    patch 'customers/withdraw'
-  end
-  namespace :public do
     root to: 'homes#top'
     get 'homes/about'
   end
@@ -23,6 +17,7 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
     resources :addresses, only: [:index, :edit, :update]
     resources :cart_items, only: [:index, :create, :update]
+    resources :customers, only: [:show, :edit, :unsubscribe, :withdraw]
   end
 
   namespace :admin do

@@ -1,7 +1,7 @@
 <h2>マイページ</h2>
   <div>
     <h3>登録情報</h3>
-    <%= link_to "編集する", public_customers_edit(@customers.id) %>
+    <%= link_to "編集する", public_customers_edit(@customer.id) %>
   </div>
   <table>
     <tbody>
@@ -23,9 +23,9 @@
   </table>
   <div>
     <h3>配送先</h3>
-    <%= link_to "一覧を見る", public_customers_edit(@customers.id) %>
+    <%= link_to "一覧を見る", public_addresses(@customers.id) %>
   </div>
   <div>
     <h3>注文履歴</h3>
-    <%= link_to "一覧を見る", public_customers_edit(@customers.id) %>
+    <%= link_to "一覧を見る", public_orders_index(@customers.id) %>
   </div>
