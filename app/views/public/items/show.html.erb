@@ -12,7 +12,7 @@
       <p><%= @item.introduction %></p>
       <p><%= @item.genre.name %></p>
       <p>¥<%= (@item.price*1.1).floor.to_s(:delimited, delimiter: ',') %>（税込）</p>
-      <%= form_with model: @cart_items do |f| %>
+      <%= form_with model: @cart_items, url: public_cart_items_path do |f| %>
         <%= f.select :amount, *[1..3] %>
         <%= f.hidden_field :item_id, :value => @item.id %>
         <%= f.hidden_field :customer_id, :value => current_customer.id %>
