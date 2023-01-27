@@ -1,2 +1,52 @@
-<h1>Public::Orders#show</h1>
-<p>Find me in app/views/public/orders/show.html.erb</p>
+<h2>注文履歴詳細</h2>
+  <h6>注文情報</h6>
+    <table class="table table-bordered">
+      <tr>
+        <th class="nowrap">注文日</th>
+        <td>肉や野菜をホワイトソースであえてから皿に入れ、オーブンで焼く</td>
+      </tr>
+      <tr>
+        <th class="nowrap">配送先</th>
+        <td>肉や野菜をスパイスとともに煮込む</td>
+      </tr>
+      <tr>
+        <th class="nowrap">支払方法</th>
+        <td>肉や野菜をホワイトソースであえてから皿に入れ、オーブンで焼く</td>
+      </tr>
+      <tr>
+        <th class="nowrap">ステータス</th>
+        <td>肉や野菜をホワイトソースであえてから皿に入れ、オーブンで焼く</td>
+      </tr>
+    </table>
+  <h6>請求情報</h6>
+    <table class="table table-bordered">
+      <tr>
+        <th class="nowrap">商品合計</th>
+        <td>肉や野菜をホワイトソースであえてから皿に入れ、オーブンで焼く</td>
+      </tr>
+      <tr>
+        <th class="nowrap">配送料</th>
+        <td>肉や野菜をスパイスとともに煮込む</td>
+      </tr>
+      <tr>
+        <th class="nowrap">ご請求額</th>
+        <td>肉や野菜をホワイトソースであえてから皿に入れ、オーブンで焼く</td>
+      </tr>
+    </table>
+  <h6>注文内容</h6>
+    <table class="table table-bordered">
+      <tr>
+        <th>商品</th>
+        <th>単価（税込）</th>
+        <th>個数</th>
+        <th>小計</th>
+      </tr>
+      <% @orders.each do |order| %>
+        <tr>
+          <td><%= order.item.name %></td>
+          <td><%= order.item.with_tax_price%></td>
+          <td><%= order.item. %></td>
+          <td><%= order.item.name %></td>
+        </tr>
+      <% end %>
+    </table>

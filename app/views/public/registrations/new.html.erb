@@ -3,6 +3,12 @@
 <%= form_with model: @customer, url: customer_registration_path do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
 
+  <table>
+    <tr>
+      <th>名前</th>
+      <td><%= f.label :(姓) %><%= f.text_field :last_name %></td>
+      <td><%= f.label :(名) %><%= f.text_field :first_name %></td>
+    </tr>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -22,8 +28,9 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "新規登録" %>
   </div>
 <% end %>
+</table>
 
 <%= render "public/shared/links" %>
