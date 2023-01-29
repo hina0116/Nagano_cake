@@ -1,8 +1,9 @@
 <h2>注文履歴詳細</h2>
+
 <table>
   <tr>
     <th>購入者</th>
-    <td></td>
+    <td><%= link_to @order.name, admin_customer_path %></td>
   </tr>
   <tr>
     <th>注文日</th>
@@ -15,12 +16,12 @@
   </tr>
   <tr>
     <th>支払方法</th>
-    <td></td>
+    <td><%= @order.payment _method %></td>
   </tr>
   <tr>
     <th>注文ステータス</th>
-    <td></td>
-    <td><%= f.submit '更新' %></td>
+    <td><%= f.collection_select :genre_id, Genre.all ,:id, :name, include_blank: "--選択してください--" %></td>
+    <td><%= link_to "更新", admin_order_path %></td>
   </tr>
 </table>
 
@@ -40,13 +41,27 @@
       <% @order.each do |order| %>
         <tr>
           <td><%= order.item.name %></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td><%= order.item.with_tax_price%></td>
+          <td><%= order.item.amount %></td>
+          <td><%= order.subtotal %></td>
           <td></td>
           <td><%= f.submit '更新' %></td>
         </tr>
       <% end %>
     </tbody>
+  </table>
+  <table>
+    <tr>
+      <th>商品合計</th>
+      <td><%= @total %></td>
+    </tr>
+    <tr>
+      <th>送料</th>
+      <td>800円</td>
+    </tr>
+    <tr>
+      <th>請求金額合計</th>
+      <td></td>
+    </tr>
   </table>
 </div>

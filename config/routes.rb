@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   namespace :public do
     resources :items, only: [:index, :show]
     resources :addresses, only: [:index, :edit, :update]
-    resources :cart_items, only: [:index, :create, :update]
     delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
+    resources :cart_items, only: [:index, :create, :update, :destroy]
     resources :customers, only: [:show, :edit, :unsubscribe, :withdraw]
     resources :orders, only: [:new, :index, :show, :complete]
   end

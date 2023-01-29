@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>商品一覧</h2><h5>(全X件)</h5>
+  <h2>商品一覧(全<%= @items.count %>件)</h2>
     <% @items.each do |item| %>
       <div class="row row-cols-1 row-cols-md-3 g-4">
         <div class="col">
@@ -20,3 +20,4 @@
       </div>
     <% end %>
 </div>
+<%= paginate @items %>
