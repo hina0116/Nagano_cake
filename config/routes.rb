@@ -14,7 +14,8 @@ Rails.application.routes.draw do
     resources :cart_items, only: [:index, :create, :update, :destroy]
     resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
     post 'orders/confirm'
-    resources :orders, only: [:new, :index, :show, :complete]
+    get '/orders/complete'
+    resources :orders, only: [:new, :create, :index, :show]
   end
 
   namespace :admin do

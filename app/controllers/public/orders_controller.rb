@@ -1,11 +1,23 @@
 class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
+    @addresses = current_customer.addresses.all
   end
 
   def create
     @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
     @order.save
+
+    current_customer.cart_items.each do |cart_item|
+      @order_details = OrderDetails.new
+      @order_details.item_id = cart_item.item_id
+      @order_details.tax_included_price = (cart_item.item.price*1.08).floor
+      @order_details.order_id =  @order.id
+      @order_details.save
+    end
+
+    current_customer.cart_items.destroy_all
     redirect_to new_public_order_path
   end
 
@@ -13,11 +25,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @orders = current_customer.orders
   end
 
   def show
     @order = Order.find(params[:id])
+    @order_details = @order.order_details
   end
 
   def update
@@ -45,6 +58,7 @@ class Public::OrdersController < ApplicationController
     @order.address = params[:order][:address]
     @order.name = params[:order][:name]
     end
+    @order.customer_id = current_customer.id
   end
 
   private
