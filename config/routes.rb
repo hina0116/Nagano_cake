@@ -3,11 +3,6 @@ Rails.application.routes.draw do
   namespace :public do
     root to: 'homes#top'
     get 'homes/about'
-  end
-  namespace :admin do
-    get '' => 'homes#top'
-  end
-  namespace :public do
     resources :items, only: [:index, :show]
     resources :addresses, only: [:new, :create, :index, :edit, :update, :destroy]
     delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
@@ -19,6 +14,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    get '' => 'homes#top'
     resources :genres, only: [:new, :create, :index, :edit, :update]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]

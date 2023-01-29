@@ -13,7 +13,7 @@
         <tr>
           <td><%= link_to order.created_at, admin_path %></td>
           <td><%= order.name %></td>
-          <td><%= order.order_details.amount %></td>
+          <td><%= @order_details.amount %></td>
           <td><%= order.status %></td>
         </tr>
       <% end %>
