@@ -18,7 +18,7 @@ class Public::OrdersController < ApplicationController
       @order_detail.save
     end
 
-    # current_customer.cart_items.destroy_all
+    current_customer.cart_items.destroy_all
     redirect_to public_orders_complete_path
   end
 
@@ -65,7 +65,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-      params.require(:order).permit(:postal_code, :address, :name, :payment_method, :shipping_cost, :payment_method, :status, :total_payment)
+    params.require(:order).permit(:postal_code, :address, :name, :payment_method, :shipping_cost, :payment_method, :status, :total_payment, :updated_at, :created_at)
   end
 
 end
