@@ -7,7 +7,11 @@ Rails.application.routes.draw do
     resources :addresses, only: [:new, :create, :index, :edit, :update, :destroy]
     delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :cart_items, only: [:index, :create, :update, :destroy]
-    resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
+    get '/customers/unsubscribe'
+    patch '/customers/withdraw'
+    get '/customers/my_page' => 'customers#show'
+    get '/customers/information/edit' => 'customers#edit'
+    patch '/customers/information' => 'customers#update'
     post 'orders/confirm'
     get '/orders/complete'
     resources :orders, only: [:new, :create, :index, :show]
@@ -18,7 +22,8 @@ Rails.application.routes.draw do
     resources :genres, only: [:new, :create, :index, :edit, :update]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :orders, only: [:show]
+    resources :order_details, only: [:update]
+    resources :orders, only: [:show, :update]
   end
 
 devise_for :customers,skip: [:passwords], controllers: {
