@@ -20,7 +20,7 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
     @customer.update(is_deleted: true)
     reset_session
-    redirect_to public_root_path
+    redirect_to public_homes_path
   end
 
   private
